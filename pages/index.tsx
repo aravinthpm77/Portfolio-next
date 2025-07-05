@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Head from "next/head";
 import { cubicBezier, motion } from "framer-motion";
 import { Navigation } from "../components/Navigation/Navigation";
@@ -37,57 +37,63 @@ const index: React.FC<indexProps> = () => {
 
   const refScroll = React.useRef(null);
   let lscroll: any;
+React.useEffect(() => {
+  ReactGa.initialize("UA-177100391-3");
+  ReactGa.pageview(window.location.pathname + window.location.search);
 
-  React.useEffect(() => {
-    ReactGa.initialize("UA-177100391-3");
-    ReactGa.pageview(window.location.pathname + window.location.search);
+  if (!refScroll.current) return;
 
-    if (!refScroll.current) return;
-    // @ts-ignore
-    lscroll = new locomotiveScroll({
-      el: refScroll.current,
-      smooth: true,
-      reloadOnContextChange: true,
-      multiplier: 0.75,
-      inertia: 0.5,
-    });
+  // Initialize Locomotive Scroll
+  lscroll = new locomotiveScroll({
+    el: refScroll.current,
+    smooth: true,
+    reloadOnContextChange: true,
+    multiplier: 0.75,
+    inertia: 0.5,
+  });
 
-    // update locomotive scroll
-    window.addEventListener("load", () => {
-      let image = document.querySelector("img");
-      // @ts-ignore
-      const isLoaded = image!.complete && image!.naturalHeight !== 0;
-      lscroll.update();
-    });
+  // ✅ Force update after images load
+  const handleLoad = () => {
+    lscroll.update(); // update scroll height
+  };
 
-    // image hover effect
-    Array.from(document.querySelectorAll(".project-card__middle")).forEach(
-      (el: any) => {
-        const imgs: any = Array.from(el.querySelectorAll("img"));
-        new hoverEffect({
-          parent: el,
-          intensity: 0.2,
-          speedIn: el.dataset.speedin || undefined,
-          speedOut: el.dataset.speedout || undefined,
-          easing: el.dataset.easing || undefined,
-          hover: el.dataset.hover || undefined,
-          image1: imgs[0].getAttribute("src"),
-          image2: imgs[1].getAttribute("src"),
-          displacementImage: el.dataset.displacement,
-        });
-      }
-    );
+  window.addEventListener("load", handleLoad);
 
-    // header cursor
-    const cursor = document.querySelector(".cursor");
-    window.onmousemove = (e: any) => {
-      cursor!.setAttribute("style", `top: ${e.pageY}px; left: ${e.pageX}px;`);
-    };
+  // ✅ Fallback: trigger update after 1s (helps in case image loads don't trigger)
+  setTimeout(() => {
+    lscroll.update();
+  }, 1000);
 
-    console.clear();
-    
-    
-  }, []);
+  // ✅ Image hover effect
+  Array.from(document.querySelectorAll(".project-card__middle")).forEach(
+    (el: any) => {
+      const imgs: any = Array.from(el.querySelectorAll("img"));
+      new hoverEffect({
+        parent: el,
+        intensity: 0.2,
+        speedIn: el.dataset.speedin || undefined,
+        speedOut: el.dataset.speedout || undefined,
+        easing: el.dataset.easing || undefined,
+        hover: el.dataset.hover || undefined,
+        image1: imgs[0].getAttribute("src"),
+        image2: imgs[1].getAttribute("src"),
+        displacementImage: el.dataset.displacement,
+      });
+    }
+  );
+
+  // ✅ Custom cursor
+  const cursor = document.querySelector(".cursor");
+  window.onmousemove = (e: any) => {
+    cursor?.setAttribute("style", `top: ${e.pageY}px; left: ${e.pageX}px;`);
+  };
+
+  return () => {
+    window.removeEventListener("load", handleLoad);
+    lscroll.destroy();
+  };
+}, []);
+
 
   const handleSpeaker = () => {
     const audio = document.querySelector("#audioPlayer") as HTMLVideoElement;
@@ -469,6 +475,35 @@ Alongside, I freelance in video editing to bring ideas to life visually.
               </div>
             </div>
           </section>
+          <section className="section-experience">
+            <h1 className="heading-1">
+              <span>My Experience</span> <small>🚀</small>
+            </h1>
+            <p className="paragraph">Here’s a quick look at where I’ve worked.</p>
+            <div className="experience-list">
+              <div className="experience-card">
+                <h3 className="experience-role">App Developer Intern</h3>
+                <p className="experience-company">Accenture</p>
+                <p className="experience-duration">Feb 2025 – Jun 2025</p>
+                <p className="experience-description">
+                  Assisted in developing and testing SAP ABAP reports and Fiori applications, gaining hands-on experience in enterprise-level SAP modules and integration workflows. </p>
+              </div>
+
+              <div className="experience-card">
+                <h3 className="experience-role">Backend Developer Intern</h3>
+                <p className="experience-company">NullClass Private Ltd</p>
+                <p className="experience-duration">May 2023 – Jul 2023</p>
+                <p className="experience-description">
+                  Decreased page loading time by optimizing backend APIs. Analyzed performance and integrated modern UI tools like Framer.
+                </p>
+              </div>
+
+              
+
+              
+            </div>
+          </section>
+
            <section className="section-socials">
             <h1 className="heading-1">
               <span>Dont be a stranger!</span> <small>👋</small>
@@ -508,7 +543,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
               of creative designers and developers. If you think we might be a
               good fit for one another, send me an
               <a
-                href="mailto:adeolaonigegeara@gmail.com"
+                href="mailto:aravinth7703@gmail.com"
                 rel="noopener"
                 target="_blank"
               >

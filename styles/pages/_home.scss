@@ -1,7 +1,10 @@
 .header-wrapper {
   display: grid;
   grid-template-columns: 1fr repeat(12, minmax(min-content, 10rem)) 1fr;
+  min-height: calc(100vh + 10rem);
+  overflow: visible;
   position: relative;
+  grid-auto-rows: min-content;
   &::before {
     content: "";
     display: block;
@@ -491,7 +494,136 @@
   &:hover {
     animation-play-state: paused;
   }
+ 
 }
+
+//section-experience
+.section-experience {
+  grid-column: 3/15;
+  width: 80%;
+  padding: 10rem 0;
+  text-align: center;
+
+  .heading-1 {
+    left:0;
+    top:0;
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+
+    span {
+      background: linear-gradient(to right, #a0f1f7, #ffb8e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    small {
+      font-size: 2.8rem;
+    }
+  }
+
+  .paragraph {
+    left:0;
+    top:0;
+    margin-left: -670px;
+    font-size: 1.8rem;
+    color: #9d9d9d;
+    margin-bottom: 6rem;
+
+    @media only screen and (max-width: 57em) {
+      margin-left: -100px;
+    }
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .experience-card {
+    width: 80%;
+    background: linear-gradient(
+      180deg,
+      rgba(35, 37, 49, 0.5) 0%,
+      rgba(15, 15, 24, 0.5) 100%
+    );
+    border: 0.2rem solid #20222e;
+    box-sizing: border-box;
+    backdrop-filter: blur(54px);
+    border-radius: 7.3rem;
+    padding: 6rem;
+    position: relative;
+    text-align: left;
+    color: #f2f2f2;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -5rem;
+      right: -5rem;
+      width: 15rem;
+      height: 15rem;
+      background-image: url("../../public/svg/01.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      @media only screen and (max-width: 57em) {
+        top: -3rem;
+        right: -3rem;
+        width: 12rem;
+        height: 12rem;
+      }
+    }
+
+    &:nth-of-type(2)::before {
+      background-image: url("../../public/svg/02.svg");
+    }
+
+    &:nth-of-type(3)::before {
+      background-image: url("../../public/svg/03.svg");
+    }
+
+    .experience-role {
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .experience-company {
+      font-style: italic;
+      font-size: 1.8rem;
+      color: #c0c0c0;
+      margin-bottom: 0.5rem;
+    }
+
+    .experience-duration {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      color: #999;
+    }
+
+    .experience-description {
+      font-size: 1.6rem;
+      line-height: 1.7;
+    }
+
+    @media only screen and (max-width: 57em) {
+      width: 75%;
+      border-radius: 6.3rem;
+      padding: 4rem;
+    }
+
+    @media only screen and (max-width: 35em) {
+      width: 90%;
+      border-radius: 5rem;
+    }
+  }
+}
+
 
 // section-contact
 .section-contact {

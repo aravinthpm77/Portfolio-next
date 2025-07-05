@@ -39,6 +39,8 @@
       }
     }
     .toggle-button-wrapper {
+      z-index: 10001; // Ensures button is always on top
+      position: relative;
       @include centerContent;
       color: var(--color-gray);
       font-family: $font-tertiary;
@@ -92,6 +94,8 @@
   background-color: #050810;
   color: var(--color-white);
   overflow-y: scroll;
+  
+
 }
 
 .navigation-top {
