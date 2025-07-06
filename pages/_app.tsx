@@ -3,7 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import { Analytics } from "@vercel/analytics/react";
 import "../styles/global.scss";
-
+import '../styles/pages/services/web.scss';
 function handleExitComplete() {
   if (typeof window !== "undefined") {
     window.scrollTo({ top: 0 });
