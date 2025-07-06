@@ -1,4 +1,5 @@
-import React, { useState,useEffect } from "react";
+import React, { useState , useEffect} from "react";
+import { useRouter } from 'next/router';
 import Head from "next/head";
 import { cubicBezier, motion } from "framer-motion";
 import { Navigation } from "../components/Navigation/Navigation";
@@ -13,6 +14,8 @@ interface Ireply {
   userName: string;
   reply: string;
 }
+
+
 
 const locomotiveScroll =
   typeof window !== `undefined` ? require("locomotive-scroll").default : null;
@@ -29,11 +32,19 @@ const transition: { duration: number; ease: any } = {
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
 const index: React.FC<indexProps> = () => {
+
+
   const [speakerState, setSpeakerState] = useState("muted");
   const [isToggleOpen, setIsToggleOpen] = useState<boolean>(false);
   const { data: reviews, error } = useSwr("/api/tweets", fetcher);
 
   if (error) console.log(error);
+
+  const router = useRouter();
+
+  const handleNavigation = (path: string) => {
+    router.push(path);
+  };
 
   const refScroll = React.useRef(null);
   let lscroll: any;
@@ -94,17 +105,21 @@ React.useEffect(() => {
   };
 }, []);
 
-
-  const handleSpeaker = () => {
-    const audio = document.querySelector("#audioPlayer") as HTMLVideoElement;
-
-    if (speakerState === "muted") {
-      setSpeakerState("unmuted");
-      audio.pause();
-    } else {
-      setSpeakerState("muted");
-      audio.play();
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window !== "undefined") {
+      return (localStorage.getItem("theme") as "light" | "dark") || "dark";
     }
+    return "dark";
+  });
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   function toggleBodyScroll(isToggleOpen: boolean) {
@@ -188,20 +203,20 @@ React.useEffect(() => {
           </header>
           <div className="header__footer">
             <div className="header__footer--left">
-              <div className="speaker">
+              <div className="speaker" onClick={toggleTheme} style={{ cursor: "pointer" }}>
                 <div
-                  onClick={handleSpeaker}
-                  className={`${"speaker__toggle"} ${
-                    speakerState === "unmuted"
-                      ? `${"speaker__toggle--anim"}`
-                      : ``
-                  }`}
+                  className={`speaker__toggle ${theme === "light" ? "speaker__toggle--anim" : ""}`}
                 >
                   &nbsp;
                 </div>
+
                 <div className="speaker__muted">
-                  <img src="svg/muted.svg" alt="muted icon" />
+                  <img
+                    src={theme === "dark" ? "svg/moon.svg" : "svg/sun.svg"}
+                    alt={theme === "dark" ? "Dark Mode" : "Light Mode"}
+                  />
                 </div>
+
                 <div className="speaker__unmuted">
                   <svg
                     width="14"
@@ -215,7 +230,7 @@ React.useEffect(() => {
                       y="1.06665"
                       width="1.4"
                       height="10"
-                      fill="#F2F2F2"
+                      fill={theme === "dark" ? "#F2F2F2" : "#10101A"}
                       className="rect1-anim"
                     />
                     <rect
@@ -223,7 +238,7 @@ React.useEffect(() => {
                       y="1.06665"
                       width="1.4"
                       height="10"
-                      fill="#F2F2F2"
+                      fill={theme === "dark" ? "#F2F2F2" : "#10101A"}
                       className="rect2-anim"
                     />
                     <rect
@@ -231,17 +246,9 @@ React.useEffect(() => {
                       y="1.06665"
                       width="1.4"
                       height="10"
-                      fill="#F2F2F2"
+                      fill={theme === "dark" ? "#F2F2F2" : "#10101A"}
                       className="rect3-anim"
                     />
-                    {/* <rect
-                      x="13.2"
-                      y="1.06665"
-                      width="1.4"
-                      height="10"
-                      fill="#F2F2F2"
-                      className="rect4-anim"
-                    /> */}
                   </svg>
                 </div>
               </div>
@@ -286,7 +293,9 @@ Alongside, I freelance in video editing to bring ideas to life visually.
               Yeah, I work Hard. Here are some of the services I Offer.
             </p>
 
-            <div className="project-card">
+            <div className="project-card"
+              onClick={() => handleNavigation("/services/web")}
+              style={{ cursor: "pointer" }}>
               <div className="project-card__left">
                 <h4 className="heading-4">
                   REACT JS, NODE JS, FRAMER MOTION, TAILWIND CSS, EXPRESS JS
