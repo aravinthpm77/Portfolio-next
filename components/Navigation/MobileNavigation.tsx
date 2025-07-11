@@ -66,7 +66,7 @@ export const MobileNavigation = ({ variants, isOpen }: any) => (
               💼 Ld
             </a>
             <a
-              href="https://www.instagram.com/adeolaadeoti_"
+              href="https://www.instagram.com/itz.arvinth/"
               rel="noopener"
               target="_blank"
             >
