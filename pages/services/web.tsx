@@ -89,7 +89,7 @@ const skills = [
   { src: 'https://img.icons8.com/color/96/nodejs.png', label: 'Node.js' },
   { src: 'https://img.icons8.com/color/96/nextjs.png', label: 'Next.js' },
   { src: 'https://img.icons8.com/color/96/vue-js.png', label: 'Vue.js' },
-  { src: 'https://img.icons8.com/color/96/express.png', label: 'Express' },
+  { src: 'https://img.icons8.com/ios/50/express-js.png', label: 'Express' },
   { src: 'https://img.icons8.com/color/96/mongodb.png', label: 'MongoDB' },
   { src: 'https://img.icons8.com/color/96/mysql-logo.png', label: 'MySQL' },
   { src: 'https://img.icons8.com/color/96/html-5--v1.png', label: 'HTML' },

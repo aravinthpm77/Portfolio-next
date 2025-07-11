@@ -1,7 +1,7 @@
 .home-header {
   display: flex;
   height: 100vh;
-background-color: #d9d9d9;
+  background-color: #d9d9d9;
   @media only screen and (max-width: 53em) {
     flex-direction: column;
     height: max-content;
@@ -462,11 +462,10 @@ background-color: #d9d9d9;
 
 
 .footer {
-  grid-column: 1/15;
- 
   background-color: var(--color-black);
   display: grid;
   color: white;
+  border: none;
   grid-template-columns: 1fr repeat(12, minmax(min-content, 10rem)) 1fr;
   @media only screen and (max-width: 53em) {
     padding: 10rem 6rem;
@@ -494,7 +493,7 @@ background-color: #d9d9d9;
           display: block;
           background-color: transparent;
           outline: none;
-          border: 1px solid #707070;
+          border: 1px solid #9a9a9a;
           padding: 2rem 1.5rem;
           width: 100%;
           color: var(--color-white);
