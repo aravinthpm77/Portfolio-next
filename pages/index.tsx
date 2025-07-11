@@ -270,7 +270,7 @@ React.useEffect(() => {
                 💼 LinkedIN
               </a>
               <a
-                href="https://www.instagram.com/adeolaadeoti_"
+                href="https://www.instagram.com/itz.arvinth/"
                 rel="noopener"
                 target="_blank"
               >
@@ -535,7 +535,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
                 💼 LinkedIn
               </a>
               <a
-                href="https://www.instagram.com/adeolaadeoti_"
+                href="https://www.instagram.com/itz.arvinth/"
                 rel="noopener"
                 target="_blank"
               >
@@ -570,7 +570,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
           />
           <div className="footer__socials">
             <a
-              href="https://dribbble.com/shots/16100745-Adeola-Adeoti-Personal-Website"
+              href="https://www.linkedin.com/in/aravinth-pm-5359071b7/"
               target="_blank"
               rel="noopener"
             >
