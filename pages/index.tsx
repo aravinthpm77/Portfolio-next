@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from 'next/router';
 import Head from "next/head";
-import { cubicBezier } from "framer-motion";
 import { Navigation } from "../components/Navigation/Navigation";
 import useSwr from "swr";
 import ReactGa from "react-ga";
