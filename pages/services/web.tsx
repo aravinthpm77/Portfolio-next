@@ -222,9 +222,15 @@ const skillBoxVariants = {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.6, ...transition } }}
               className='home-hero__footer'>
-              <img  src='/img/github.png'style={{scale:'30px'}} alt='facebook icon' />
-              <img src='/img/ld.png' style={{scale:'1rem'}} alt='linkedIn icon' />
-              <img width="48" height="48" src="https://img.icons8.com/fluency-systems-regular/48/instagram-new--v1.png" alt="instagram-new--v1"/>
+              <a href="https://github.com/aravinthpm77" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <img src="/img/github.png" alt="GitHub" style={{ width: '32px', marginRight: '1.5rem' }} />
+                </a>
+                <a href="https://www.linkedin.com/in/aravinth-pm-5359071b7/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <img src="/img/ld.png" alt="LinkedIn" style={{ width: '32px', marginRight: '1.5rem' }} />
+                </a>
+                <a href="https://www.instagram.com/itz.arvinth/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <img src="https://img.icons8.com/fluency-systems-regular/48/instagram-new--v1.png" alt="Instagram" style={{ width: '32px' }} />
+                </a>
             </motion.div>
           </div>
         </div>
@@ -484,10 +490,10 @@ const skillBoxVariants = {
                 <a href="https://github.com/aravinthpm77" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                   <img src="/img/github.png" alt="GitHub" style={{ width: '32px', marginRight: '1.5rem' }} />
                 </a>
-                <a href="https://www.linkedin.com/in/aravinthpm77" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/aravinth-pm-5359071b7/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <img src="/img/ld.png" alt="LinkedIn" style={{ width: '32px', marginRight: '1.5rem' }} />
                 </a>
-                <a href="https://instagram.com/aravinthpm77" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <a href="https://www.instagram.com/itz.arvinth/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <img src="https://img.icons8.com/fluency-systems-regular/48/instagram-new--v1.png" alt="Instagram" style={{ width: '32px' }} />
                 </a>
               </div>

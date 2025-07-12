@@ -34,7 +34,6 @@ const fetcher = (url: any) => fetch(url).then((res) => res.json());
 const index: React.FC<indexProps> = () => {
 
 
-  const [speakerState, setSpeakerState] = useState("muted");
   const [isToggleOpen, setIsToggleOpen] = useState<boolean>(false);
   const { data: reviews, error } = useSwr("/api/tweets", fetcher);
 
@@ -118,9 +117,6 @@ React.useEffect(() => {
     }
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
 
   function toggleBodyScroll(isToggleOpen: boolean) {
     if (isToggleOpen === false) {
@@ -135,7 +131,7 @@ React.useEffect(() => {
       <div id="menu-target" data-scroll-container ref={refScroll}>
         <Head>
           <link rel="icon" href="svg/favicon.svg" />
-          <link href="https://adeolaadeoti.xyz/" rel="canonical" />
+          <link href="#" rel="canonical" />
           <meta name="theme-color" content="#10101A" />
           <meta
             name="apple-mobile-web-app-status-bar-style"
@@ -169,9 +165,7 @@ React.useEffect(() => {
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:url" content="https://adeolaadeoti.xyz/" />
         </Head>
-        <audio loop id="audioPlayer" autoPlay style={{ display: "none" }}>
-          <source src="sound/preloader.mp3" type="audio/mp3" />
-        </audio>
+        
         
         <div className="cursor"></div>
         <Navigation
@@ -197,61 +191,13 @@ React.useEffect(() => {
                 className="header__hero--cta"
                 href="#sectionProjects"
               >
-                VIEW PROJECTS
+                VIEW SERVICES
               </a>
             </div>
           </header>
           <div className="header__footer">
             <div className="header__footer--left">
-              <div className="speaker" onClick={toggleTheme} style={{ cursor: "pointer" }}>
-                <div
-                  className={`speaker__toggle ${theme === "light" ? "speaker__toggle--anim" : ""}`}
-                >
-                  &nbsp;
-                </div>
-
-                <div className="speaker__muted">
-                  <img
-                    src={theme === "dark" ? "svg/moon.svg" : "svg/sun.svg"}
-                    alt={theme === "dark" ? "Dark Mode" : "Light Mode"}
-                  />
-                </div>
-
-                <div className="speaker__unmuted">
-                  <svg
-                    width="14"
-                    height="11"
-                    viewBox="0 0 15 11"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.599976"
-                      y="1.06665"
-                      width="1.4"
-                      height="10"
-                      fill={theme === "dark" ? "#F2F2F2" : "#10101A"}
-                      className="rect1-anim"
-                    />
-                    <rect
-                      x="9"
-                      y="1.06665"
-                      width="1.4"
-                      height="10"
-                      fill={theme === "dark" ? "#F2F2F2" : "#10101A"}
-                      className="rect2-anim"
-                    />
-                    <rect
-                      x="4.79999"
-                      y="1.06665"
-                      width="1.4"
-                      height="10"
-                      fill={theme === "dark" ? "#F2F2F2" : "#10101A"}
-                      className="rect3-anim"
-                    />
-                  </svg>
-                </div>
-              </div>
+              
             </div>
             <div className="header__footer--right">
               <a
@@ -305,8 +251,8 @@ Alongside, I freelance in video editing to bring ideas to life visually.
                 className="project-card__middle"
                 data-displacement="webp/myDistorsionImage.webp"
               >
-                <img src="webp/alexxandria-1.webp" alt="alexxandria model" />
-                <img src="webp/alexxandria-2.webp" alt="alexxandria logo" />
+                <img src="/img/web-1.jpg" alt="alexxandria model" />
+                <img src="/img/web-2.jpg" alt="alexxandria logo" />
               </div>
               <div className="project-card__right">
                 <h2
@@ -322,7 +268,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
                 <a
                   rel="noopener"
                   target="_blank"
-                  href="https://github.com/aravinthpm77"
+                  href="/services/web"
                   className="project-card__link"
                 >
                   CHECK THE SERVICE
@@ -350,8 +296,8 @@ Alongside, I freelance in video editing to bring ideas to life visually.
                 className="project-card__middle"
                 data-displacement="webp/myDistorsionImage.webp"
               >
-                <img src="webp/safarika-1.webp" alt="safarika" />
-                <img src="webp/safarika-2.webp" alt="safarika logo" />
+                <img src="img/graphic-1.jpg" alt="graphic" />
+                <img src="img/graphic-2.jpg" alt="graphic logo" />
               </div>
               <div className="project-card__right">
                 <h2
@@ -376,7 +322,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
                   <a
                     rel="noopener"
                     target="_blank"
-                    href="https://github.com/aravinthpm77"
+                    href="https://www.fiverr.com/s/0bjj38a"
                   >
                     <img src="svg/dribble.svg" alt="dribble icon" />
                   </a>
@@ -387,7 +333,9 @@ Alongside, I freelance in video editing to bring ideas to life visually.
 
             
 
-            <div className="project-card">
+            <div className="project-card"
+              onClick={() => handleNavigation("/services/video")}
+              style={{ cursor: "pointer" }}>
               <div className="project-card__left">
                 <h4 className="heading-4">AFTER EFFECTS, PREMIER PRO, FINAL CUT</h4>
               </div>
@@ -396,7 +344,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
                 data-displacement="webp/myDistorsionImage.webp"
               >
                 <img src="webp/adeola-1.webp" alt="adeola model" />
-                <img src="webp/adeola-2.webp" alt="adeola logo" />
+                <img src="/img/video-2.jpg" alt="adeola logo" />
               </div>
               <div className="project-card__right">
                 <h2
@@ -412,7 +360,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
                 <a
                   rel="noopener"
                   target="_blank"
-                  href="https://github.com/aravinthpm77"
+                  href="https://www.fiverr.com/s/0bjj38a"
                   className="project-card__link"
                 >
                   CHECK OUT SERVICE
