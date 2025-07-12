@@ -433,7 +433,7 @@ const skillBoxVariants = {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
               >
-                {skills.map((skill, idx) => (
+                {skills.map((skill) => (
                   <motion.div
                     className='skill-box'
                     key={skill.label}
