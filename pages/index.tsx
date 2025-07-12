@@ -1,7 +1,7 @@
-import React, { useState , useEffect} from "react";
+import React, { useState } from "react";
 import { useRouter } from 'next/router';
 import Head from "next/head";
-import { cubicBezier, motion } from "framer-motion";
+import { cubicBezier } from "framer-motion";
 import { Navigation } from "../components/Navigation/Navigation";
 import useSwr from "swr";
 import ReactGa from "react-ga";
@@ -104,18 +104,7 @@ React.useEffect(() => {
   };
 }, []);
 
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    if (typeof window !== "undefined") {
-      return (localStorage.getItem("theme") as "light" | "dark") || "dark";
-    }
-    return "dark";
-  });
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      document.documentElement.setAttribute("data-theme", theme);
-      localStorage.setItem("theme", theme);
-    }
-  }, [theme]);
+
 
 
   function toggleBodyScroll(isToggleOpen: boolean) {
