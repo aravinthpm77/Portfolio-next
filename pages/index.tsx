@@ -23,11 +23,7 @@ const locomotiveScroll =
 const hoverEffect =
   typeof window !== `undefined` ? require("hover-effect").default : null;
 
-const transition: { duration: number; ease: any } = {
-  duration: 1.4,
-  ease: cubicBezier(0.6, 0.01, -0.05, 0.9),
-  // ease: [0.6, 0.01, -0.05, 0.9],
-};
+
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
