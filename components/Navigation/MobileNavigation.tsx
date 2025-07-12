@@ -102,7 +102,7 @@ export const MobileNavigation = ({ variants, isOpen }: any) => (
             href="https://www.linkedin.com/in/aravinth-pm-5359071b7/"
             className="navigation-bottom__projects-card"
           >
-            <img src="webp/alexxandria-nav.webp" alt="alexxandria" />
+            <img src="/img/web-3.jpg" alt="alexxandria" />
             <h2>
               WEB & APP
               <br />
@@ -115,7 +115,7 @@ export const MobileNavigation = ({ variants, isOpen }: any) => (
             rel="noopener"
             className="navigation-bottom__projects-card"
           >
-            <img src="webp/safarika-nav.webp" alt="safarika" />
+            <img src="/img/graphic-3.jpg" alt="safarika" />
             <h2>GRAPHIC DESIGN</h2>
           </a>
           <a
