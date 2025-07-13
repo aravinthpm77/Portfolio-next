@@ -344,6 +344,27 @@ const skillBoxVariants = {
                 </div>
               </div>
             </div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '6rem' }}>
+              <button
+                type="button"
+                style={{
+      
+                  padding: '1.5rem 3rem',
+                  background: '#dea833',
+                  color: '#18181b',
+                  border: 'none',
+                  
+                  fontWeight: 600,
+                  fontSize: '1.5rem',
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
+                  transition: 'background 0.2s'
+                }}
+                onClick={() => window.open('https://drive.google.com/drive/folders/18jX7bkOluXbd1cjvvVqE0Q4D8NHKb1rG?usp=drive_link', '_blank')}
+              >
+                Show More
+              </button>
+            </div>
           </div>
         </section>
 
