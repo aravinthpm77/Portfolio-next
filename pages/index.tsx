@@ -207,6 +207,15 @@ React.useEffect(() => {
                 {" "}
                 📸 Instagram
               </a>
+              <a
+                href="/resume.pdf"
+                rel="noopener"
+                target="_blank"
+               
+                
+              >
+                📄 Resume
+              </a>
             </div>
           </div>
         </div>
@@ -473,6 +482,15 @@ Alongside, I freelance in video editing to bring ideas to life visually.
               >
                 📸 Instagram
               </a>
+              <a
+                href="/resume.pdf"
+                rel="noopener"
+                target="_blank"
+               
+                
+              >
+                📄 Resume
+              </a>
             </div>
           </section>
           <section className="section-contact">
@@ -480,9 +498,9 @@ Alongside, I freelance in video editing to bring ideas to life visually.
               <span>Sold Yet? </span> <small>🤙</small>
             </h1>
             <h2 className="section-contact__h2">
-              Thanks for stopping by, I’m currently looking to join a new team
-              of creative designers and developers. If you think we might be a
-              good fit for one another, send me an
+              Thanks for visiting! I’m open to new opportunities and excited to work with 
+              creative designers and developers. <br />
+              If you believe I’d be a great fit for your project, let’s connect—send me an
               <a
                 href="mailto:aravinth7703@gmail.com"
                 rel="noopener"
@@ -497,9 +515,14 @@ Alongside, I freelance in video editing to bring ideas to life visually.
         </main>
         <footer className="footer">
           <img
-            src="svg/adeola-logo-footer.svg"
-            alt="design and devloped by adeola"
+            src="svg/adeola-logo-left.svg"
+            alt="logo"
           />
+          <div className="footer__info" >
+            <p>
+              <strong>Aravinth PM</strong>
+            </p>
+          </div>
           <div className="footer__socials">
             <a
               href="https://www.linkedin.com/in/aravinth-pm-5359071b7/"

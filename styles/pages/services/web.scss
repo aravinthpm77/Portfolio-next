@@ -375,12 +375,13 @@
 
   .skills-container {
     grid-column: 2/14;
-    display: flex;
+    display: grid; 
+    grid-template-columns: 1fr 2fr;
     align-items: flex-start;
     gap: 8rem;
 
     @media only screen and (max-width: 43.75em) {
-      flex-direction: column;
+      grid-template-columns: 1fr;
       gap: 4rem;
     }
 
@@ -454,6 +455,13 @@
             text-align: center;
             transition: color 0.2s, text-shadow 0.2s;
           }
+        }
+        @media only screen and (max-width: 43.75em) {
+          grid-template-columns: repeat(3, 1fr); // 3 columns on tablet/mobile
+          gap: 2rem;
+        }
+        @media only screen and (max-width: 25em) {
+          grid-template-columns: repeat(2, 1fr); // 2 columns on very small screens
         }
       }
     }
@@ -565,6 +573,11 @@
           }
           
         }
+        @media only screen and (max-width: 31.25em) {
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-top: 2rem;
+        } 
       }
     }
   }
@@ -576,6 +589,11 @@
   &-copyright {
     margin-top: 3rem;
     color: #fff;
+
+    @media only screen and (max-width: 31.25em) {
+      text-align: center;
+      margin-top: 1rem;
+    }
   }
 }
 

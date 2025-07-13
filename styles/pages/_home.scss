@@ -126,11 +126,13 @@
     color: var(--color-gray);
 
     @media only screen and (max-width: 57em) {
-      padding: 0 4rem;
+      padding: 10rem 4rem;
+      font-size: larger;
+      
     }
 
     &--right {
-      width: 27rem;
+      width: 50rem;
       @include centerContent;
     }
     a {
@@ -165,6 +167,11 @@
   p {
     margin-bottom: 15rem;
     margin-top: 2rem;
+
+    @media only screen and (max-width: 57em) {
+      font-size: medium;
+      
+    }
   }
 
   .project-card {
@@ -413,12 +420,14 @@
   &__top {
     grid-column:2/14;
     padding: 0 6rem;
-
-    @media only screen and (max-width: 57em) {
-      grid-column: 15/15;
-    }
+    
+    
     @media only screen and (max-width: 45em) {
-      padding: 0 10rem;
+      width: 100%;
+      top:0;
+      right: 0%;
+      margin-right: 100px;;
+
     }
 
     p {
@@ -531,7 +540,7 @@
     margin-bottom: 6rem;
 
     @media only screen and (max-width: 57em) {
-      margin-left: -100px;
+      margin-left: -40px;
     }
   }
 
@@ -641,9 +650,9 @@
   &__h2 {
     font-size: 4.5rem;
     line-height: 130.4%;
-    letter-spacing: -0.06em;
+    letter-spacing: -0.02em;
     color: var(--color-gray);
-    font-weight: 100;
+    font-weight: 600;
     margin-top: 4rem;
 
     @media only screen and (max-width: 56.25em) {
@@ -688,7 +697,7 @@
     margin-top: 4rem;
     gap: 2rem;
     flex-wrap: wrap;
-    max-width: 40rem;
+    max-width: 60rem;
   }
   a {
     @include centerContent;
@@ -713,58 +722,57 @@
   margin-top: 12rem;
   padding: 3rem 6rem;
   border-top: 1px solid rgba(#c4c4c4, 0.25);
+  background: #18181b;
 
   @media only screen and (max-width: 45em) {
     padding-left: 4rem;
-    padding-right: 4rem;
+    padding-right: 2rem;
+    
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
   }
+
+  img {
+    height: auto;
+  }
+
+  &__info {
+    @include centerContent;
+    margin-right: 16rem;
+    
+    p {
+      color: #aaa;
+      font-size: 1.5rem;
+      text-align: center;
+      width: 10rem;
+      
+      @media only screen and (max-width: 45em) {
+        margin-top: 1rem;
+      }
+    }
+  }
+
   &__socials {
     @include centerContent;
-    width: 6rem;
-  }
-}
-
-.speaker {
-  @include centerContent;
-  width: 7rem;
-  height: 4rem;
-  border: 0.2rem solid var(--color-purple);
-  border-radius: 50px;
-  padding: 1rem 1.5rem;
-  position: relative;
-
-  &__toggle {
-    position: absolute;
-    top: 50%;
-    left: 8%;
-    transform: translateY(-50%);
-    height: 2.5rem;
-    width: 2.5rem;
-    border-radius: 50%;
-    background-color: var(--color-white);
-    transition: all 0.5s ease-in-out;
-    cursor: pointer;
-    z-index: 2;
-  }
-  // &__muted {
-  // }
-  &__unmuted {
-    transform: rotate(180deg);
-    .rect1-anim {
-      animation: rect1Anim 1s ease-in-out infinite alternate;
-    }
-    .rect2-anim {
-      animation: rect2Anim 1s ease-in-out infinite alternate;
-    }
-    .rect3-anim {
-      animation: rect3Anim 1s ease-in-out infinite alternate;
-    }
-    .rect4-anim {
-      animation: rect4Anim 1s ease-in-out infinite alternate;
+    margin-left: 3rem;
+    gap: 4rem;
+    width: auto;
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+      img {
+        width: 3.2rem;
+        height: 3.2rem;
+        filter: grayscale(1) brightness(0.8);
+        transition: filter 0.2s, transform 0.2s;
+      }
+      &:hover img {
+        filter: grayscale(0) brightness(1.1);
+        transform: scale(1.1);
+      }
     }
   }
-}
-
-.speaker__toggle--anim {
-  left: 54%;
 }
