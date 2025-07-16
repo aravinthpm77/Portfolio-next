@@ -152,6 +152,66 @@
 
 // section
 
+
+.section-about {
+  grid-column: 2/14;
+  margin-top: 10rem;
+  padding: 0 6rem;
+
+  @media only screen and (max-width: 57em) {
+    grid-column: 1/15;
+    padding: 0 4rem;
+  }
+
+  .heading-1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    color: var(--color-white);
+
+    span {
+      background: linear-gradient(to right, #a0f1f7, #ffb8e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    small {
+      font-size: 2.8rem;
+    }
+  }
+
+  .about-text {
+    font-size: 1.7rem;
+    color: #bdbdbd;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    text-align: justify;
+
+    @media only screen and (max-width: 45em) {
+      font-size: 1.7rem;
+    }
+  }
+
+  .resume-link {
+    font-size: 2rem;
+    color: #999999;
+    margin-bottom: 2rem;
+    text-align: center;
+
+
+    a {
+      color: #ffffff;
+      font-size: 2.3rem;
+      text-decoration: none;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
+
+
 .section-projects {
   grid-column: 2/14;
   margin-top: 14rem;
@@ -491,7 +551,7 @@
 }
 
 .review-card__anim1 {
-  animation: reviewCardAnim1 25s ease-in-out infinite alternate;
+  animation: reviewCardAnim1 20s ease-in-out infinite alternate;
 
   &:hover {
     animation-play-state: paused;
@@ -499,7 +559,7 @@
 }
 
 .review-card__anim2 {
-  animation: reviewCardAnim2 25s ease-in-out infinite alternate;
+  animation: reviewCardAnim2 20s ease-in-out infinite alternate;
   &:hover {
     animation-play-state: paused;
   }
