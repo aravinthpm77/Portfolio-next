@@ -220,13 +220,32 @@ React.useEffect(() => {
           </div>
         </div>
         <main className="container">
-          <p className="about-text">
-            Hello stranger! 👋, my name is Aravinth PM and I build full-stack web projects <br/> that solve real problems.
-Alongside, I freelance in video editing to bring ideas to life visually.
-          </p>
+          <section className="section-about">
+            <h1 className="heading-1">
+              <span>About Me</span>
+            </h1>
+            <p className="about-text">
+              Hello stranger! My name is Aravinth PM and I build full-stack web projects that solve 
+              real problems.<br/>
+              I specialize in creating fast, responsive, and scalable applications using 
+              technologies like React.js, Next.js, Node.js, and Tailwind CSS. 
+              While I’m confident working across the full stack, I have a particular passion 
+              for crafting smooth frontend experiences and building responsive, performance-optimized 
+              interfaces.<br /><br/>
+              I enjoy breaking down complex problems, optimizing workflows, and continuously learning 
+              new tools to stay at the edge of modern web development. I'm also experienced with animation 
+              libraries like Framer Motion and have integrated secure payment gateways and database solutions
+              in multiple projects.<br /><br/>
+              Outside of tech, I’m someone who thrives on creativity. My interests span video editing, dance and exploring the world of visual design. Whether it’s editing showreels or contributing to creative collaborations, I love expressing ideas that go beyond code.
+              Feel free to browse through my work or connect with me to explore what we can build together.
+            </p>
+            <p className="resume-link">
+              Check out my <a href="/resume.pdf" target="_blank" rel="noopener">resume</a> to know more about my technical skillsets.
+            </p>
+          </section>
           <section id="sectionProjects" className="section-projects">
             <h1 className="heading-1">
-              <span>Services I Offer </span> <small>💼</small>
+              <span>Services I Offer </span> 
             </h1>
             <p className="paragraph">
               Yeah, I work Hard. Here are some of the services I Offer.
@@ -281,6 +300,51 @@ Alongside, I freelance in video editing to bring ideas to life visually.
               </div>
             </div>
 
+<div className="project-card"
+              onClick={() => handleNavigation("/services/video")}
+              style={{ cursor: "pointer" }}>
+              <div className="project-card__left">
+                <h4 className="heading-4">AFTER EFFECTS, PREMIER PRO, FINAL CUT</h4>
+              </div>
+              <div
+                className="project-card__middle"
+                data-displacement="webp/myDistorsionImage.webp"
+              >
+                <img src="webp/adeola-1.webp" alt="adeola model" />
+                <img src="/img/video-2.jpg" alt="adeola logo" />
+              </div>
+              <div className="project-card__right">
+                <h2
+                  data-scroll
+                  data-scroll-offset="35%"
+                  data-scroll-repeat={true}
+                  data-scroll-class="adeola-anim"
+                  className="heading-2"
+                >
+                  VIDEO EDITING
+                  <br /> & ANIMATION
+                </h2>
+                <a
+                  rel="noopener"
+                  target="_blank"
+                  href="https://www.fiverr.com/s/0bjj38a"
+                  className="project-card__link"
+                >
+                  CHECK OUT SERVICE
+                </a>
+                <div className="project-card__socials">
+                  <a
+                    rel="noopener"
+                    target="_blank"
+                    href="#"
+                  >
+                    <img src="svg/dribble.svg" alt="dribble icon" />
+                  </a>
+                  
+                </div>
+              </div>
+            </div>
+
             <div className="project-card">
               <div className="project-card__left">
                 <h4 className="heading-4">PHOTOSHOP, FIGMA, ILLUSTRATOR, CANVA</h4>
@@ -326,50 +390,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
 
             
 
-            <div className="project-card"
-              onClick={() => handleNavigation("/services/video")}
-              style={{ cursor: "pointer" }}>
-              <div className="project-card__left">
-                <h4 className="heading-4">AFTER EFFECTS, PREMIER PRO, FINAL CUT</h4>
-              </div>
-              <div
-                className="project-card__middle"
-                data-displacement="webp/myDistorsionImage.webp"
-              >
-                <img src="webp/adeola-1.webp" alt="adeola model" />
-                <img src="/img/video-2.jpg" alt="adeola logo" />
-              </div>
-              <div className="project-card__right">
-                <h2
-                  data-scroll
-                  data-scroll-offset="35%"
-                  data-scroll-repeat={true}
-                  data-scroll-class="adeola-anim"
-                  className="heading-2"
-                >
-                  VIDEO EDITING
-                  <br /> & ANIMATION
-                </h2>
-                <a
-                  rel="noopener"
-                  target="_blank"
-                  href="https://www.fiverr.com/s/0bjj38a"
-                  className="project-card__link"
-                >
-                  CHECK OUT SERVICE
-                </a>
-                <div className="project-card__socials">
-                  <a
-                    rel="noopener"
-                    target="_blank"
-                    href="#"
-                  >
-                    <img src="svg/dribble.svg" alt="dribble icon" />
-                  </a>
-                  
-                </div>
-              </div>
-            </div>
+            
           </section>
           <section
             data-scroll
@@ -383,7 +404,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
                 <span>Mmmm, a little brag </span> <small>😊</small>
               </h1>
               <p className="paragraph paragraph__sub">
-                What people are saying about my last portfolio
+                What people are saying about my works
               </p>
             </div>
             <div className="section-reviews__bottom">
@@ -396,7 +417,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
                         <h3 className="review-card__h3">{review.userName}</h3>
                       </div>
                       <div className="review-card__top--right">
-                        <img src="svg/twitter.svg" alt="twitter icon" />
+                        <img src="https://img.icons8.com/ios-glyphs/30/FFFFFF/twitterx--v1.png" alt="twitter icon" />
                       </div>
                     </div>
                     <div className="review-card__bottom">
@@ -414,7 +435,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
                         <h3 className="review-card__h3">{review.userName}</h3>
                       </div>
                       <div className="review-card__top--right">
-                        <img src="svg/twitter.svg" alt="twitter icon" />
+                        <img src="https://img.icons8.com/ios-glyphs/30/FFFFFF/twitterx--v1.png" alt="twitter icon" />
                       </div>
                     </div>
                     <div className="review-card__bottom">
@@ -427,7 +448,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
           </section>
           <section className="section-experience">
             <h1 className="heading-1">
-              <span>My Experience</span> <small>🚀</small>
+              <span>My Experience</span>
             </h1>
             <p className="paragraph">Here’s a quick look at where I’ve worked.</p>
             <div className="experience-list">
@@ -456,7 +477,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
 
            <section className="section-socials">
             <h1 className="heading-1">
-              <span>Dont be a stranger!</span> <small>👋</small>
+              <span>Dont be a stranger!</span> 
             </h1>
             <p className="paragraph">Connect with me online</p>
             <div className="section-socials--links">
@@ -494,9 +515,7 @@ Alongside, I freelance in video editing to bring ideas to life visually.
             </div>
           </section>
           <section className="section-contact">
-            <h1 className="heading-1">
-              <span>Sold Yet? </span> <small>🤙</small>
-            </h1>
+            
             <h2 className="section-contact__h2">
               Thanks for visiting! I’m open to new opportunities and excited to work with 
               creative designers and developers. <br />
