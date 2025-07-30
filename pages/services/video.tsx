@@ -366,6 +366,7 @@ const skillBoxVariants = {
               </button>
             </div>
           </div>
+         
         </section>
 
         <section data-scroll-section id='sectionSkills' className='section-skills'>

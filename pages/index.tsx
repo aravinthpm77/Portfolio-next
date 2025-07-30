@@ -101,6 +101,13 @@ React.useEffect(() => {
 
 
 
+React.useEffect(() => {
+  if (isToggleOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+}, [isToggleOpen]);
 
   function toggleBodyScroll(isToggleOpen: boolean) {
     if (isToggleOpen === false) {
@@ -121,7 +128,7 @@ React.useEffect(() => {
             name="apple-mobile-web-app-status-bar-style"
             content="#10101A"
           />
-          <title>Aravinth PM &mdash; Full Stack Developer</title>
+          <title>Aravinth PM — Full Stack Developer & Creative Technologist</title>
           <meta
             name="description"
             content="I'm a self-taught Front End Developer and turning ideas into real life products is my calling."
@@ -175,7 +182,7 @@ React.useEffect(() => {
                 className="header__hero--cta"
                 href="#sectionProjects"
               >
-                VIEW SERVICES
+                EXPLORE WORKS
               </a>
             </div>
           </header>
@@ -245,10 +252,10 @@ React.useEffect(() => {
           </section>
           <section id="sectionProjects" className="section-projects">
             <h1 className="heading-1">
-              <span>Services I Offer </span> 
+              <span>What I Do & Know</span> 
             </h1>
             <p className="paragraph">
-              Yeah, I work Hard. Here are some of the services I Offer.
+              Technologies and skills I’ve applied in real-world development and creative projects.
             </p>
 
             <div className="project-card"
@@ -343,54 +350,7 @@ React.useEffect(() => {
                   
                 </div>
               </div>
-            </div>
-
-            <div className="project-card">
-              <div className="project-card__left">
-                <h4 className="heading-4">PHOTOSHOP, FIGMA, ILLUSTRATOR, CANVA</h4>
-              </div>
-              <div
-                className="project-card__middle"
-                data-displacement="webp/myDistorsionImage.webp"
-              >
-                <img src="img/graphic-1.jpg" alt="graphic" />
-                <img src="img/graphic-2.jpg" alt="graphic logo" />
-              </div>
-              <div className="project-card__right">
-                <h2
-                  data-scroll
-                  data-scroll-offset="35%"
-                  data-scroll-repeat={true}
-                  data-scroll-class="safarika-anim"
-                  className="heading-2"
-                >
-                  GRAPHIC 
-                  <br /> & DESIGN
-                </h2>
-                <a
-                  rel="noopener"
-                  target="_blank"
-                  href="https://github.com/aravinthpm77"
-                  className="project-card__link"
-                >
-                  CHECK THE SERVICE
-                </a>
-                <div className="project-card__socials">
-                  <a
-                    rel="noopener"
-                    target="_blank"
-                    href="https://www.fiverr.com/s/0bjj38a"
-                  >
-                    <img src="svg/dribble.svg" alt="dribble icon" />
-                  </a>
-                 
-                </div>
-              </div>
-            </div>
-
-            
-
-            
+            </div> 
           </section>
           <section
             data-scroll
