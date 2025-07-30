@@ -24,6 +24,7 @@ const closedTansition = {
   ease: cubicBezier(0.6, 0.01, -0.05, 0.9),
 };
 
+
 export const MobileNavigation = ({ variants, isOpen }: any) => (
   <motion.div
     data-scroll
@@ -55,7 +56,7 @@ export const MobileNavigation = ({ variants, isOpen }: any) => (
               rel="noopener"
               target="_blank"
             >
-              👾 GH
+              👾 GITHUB
             </a>
             
             <a
@@ -63,14 +64,14 @@ export const MobileNavigation = ({ variants, isOpen }: any) => (
               rel="noopener"
               target="_blank"
             >
-              💼 Ld
+              💼 LINKEDIN
             </a>
             <a
               href="https://www.instagram.com/itz.arvinth/"
               rel="noopener"
               target="_blank"
             >
-              📸 IS
+              📸 INSTAGRAM
             </a>
           </div>
         </div>
@@ -94,7 +95,7 @@ export const MobileNavigation = ({ variants, isOpen }: any) => (
         }
         className="navigation-bottom"
       >
-        <h4 className="navigation-h4">FEATURED SERVICES</h4>
+        <h4 className="navigation-h4">FEATURED WORKS</h4>
         <div className="navigation-bottom__projects">
           <a
             target="_blank"
@@ -109,15 +110,7 @@ export const MobileNavigation = ({ variants, isOpen }: any) => (
               DEVELOPMENT
             </h2>
           </a>
-          <a
-            href="https://www.linkedin.com/in/aravinth-pm-5359071b7/"
-            target="_blank"
-            rel="noopener"
-            className="navigation-bottom__projects-card"
-          >
-            <img src="/img/graphic-3.jpg" alt="safarika" />
-            <h2>GRAPHIC DESIGN</h2>
-          </a>
+          
           <a
             href="https://www.linkedin.com/in/aravinth-pm-5359071b7/"
             target="_blank"

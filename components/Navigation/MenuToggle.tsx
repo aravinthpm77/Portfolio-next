@@ -29,10 +29,16 @@ export const MenuToggle: React.FC<menuToggleProps> = ({
   toggleState,
 }) => (
   <div className="toggle-button-wrapper" onClick={toggle}>
+    <a
+      href="/resume.pdf"
+      rel="noopener"
+      target="_blank"
+    >
+    Resume
+    </a>
     {toggleState ? <span>CLOSE</span> : <span>MENU</span>}
     <button className="toggle-button">
       <motion.svg
-        whileHover={{ width: 47, height: 15 }}
         width="57"
         height="20"
         viewBox="0 0 26 20"
