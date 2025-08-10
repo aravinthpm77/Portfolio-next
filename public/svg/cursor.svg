@@ -1,16 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <!-- Define a very small circular path -->
-  <defs>
-    <path id="circlePath" d="M256,196 a60,60 0 1,1 -0.1,0"/>
-  </defs>
-
-  <!-- Repeating 'ARAVINTH —' along the tiny circle -->
-  <text font-size="12" fill="white" font-family="Arial, sans-serif" text-anchor="middle">
-    <textPath href="#circlePath" startOffset="0%">
-      ARAVINTH — ARAVINTH — ARAVINTH — ARAVINTH — ARAVINTH — ARAVINTH — ARAVINTH — ARAVINTH — ARAVINTH —
-    </textPath>
-  </text>
-
-  <!-- Center dot -->
-  <circle cx="256" cy="256" r="4" fill="white"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><defs><path id="circlePath" d="M256,196 a60,60 0 1,1 -0.1,0"/></defs><text fill="#fff" font-family="Arial, sans-serif" font-size="12" text-anchor="middle"><textPath href="#circlePath" startOffset="0%">ARAVINTH — ARAVINTH — ARAVINTH — ARAVINTH — ARAVINTH — ARAVINTH — ARAVINTH — ARAVINTH — ARAVINTH —</textPath></text><circle cx="256" cy="256" r="4" fill="#fff"/></svg>
