@@ -138,7 +138,7 @@ React.useEffect(() => {
             property="og:title"
             content="Aravinth PM &mdash; Full Stack Developer"
           />
-          <meta property="og:url" content="https://adeolaadeoti.xyz/" />
+          <meta property="og:url" content="https://aravinthpm.vercel.app/" />
           <meta property="og:image" content="webp/preview-image.png" />
           <meta
             property="og:description"
