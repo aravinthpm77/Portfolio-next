@@ -154,7 +154,7 @@ React.useEffect(() => {
           />
           <meta name="twitter:image" content="webp/preview-image.png" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:url" content="https://adeolaadeoti.xyz/" />
+          <meta name="twitter:url" content="https://aravinthpm.vercel.app/" />
         </Head>
         
         
