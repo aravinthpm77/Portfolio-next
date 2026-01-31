@@ -4,6 +4,8 @@ import Head from "next/head";
 import { Navigation } from "../components/Navigation/Navigation";
 import useSwr from "swr";
 import ReactGa from "react-ga";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 interface indexProps {}
 
@@ -40,64 +42,73 @@ const index: React.FC<indexProps> = () => {
     router.push(path);
   };
 
+  // Calculate months since October 2025
+  const startDate = new Date(2025, 9); // October 2025 (month is 0-indexed)
+  const now = new Date();
+  const months = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth());
+
   const refScroll = React.useRef(null);
   let lscroll: any;
-React.useEffect(() => {
-  ReactGa.initialize("UA-177100391-3");
-  ReactGa.pageview(window.location.pathname + window.location.search);
+  React.useEffect(() => {
+    ReactGa.initialize("UA-177100391-3");
+    ReactGa.pageview(window.location.pathname + window.location.search);
 
-  if (!refScroll.current) return;
+    if (!refScroll.current) return;
 
-  // Initialize Locomotive Scroll
-  lscroll = new locomotiveScroll({
-    el: refScroll.current,
-    smooth: true,
-    reloadOnContextChange: true,
-    multiplier: 0.75,
-    inertia: 0.5,
-  });
+    // Initialize Locomotive Scroll
+    lscroll = new locomotiveScroll({
+      el: refScroll.current,
+      smooth: true,
+      reloadOnContextChange: true,
+      multiplier: 0.75,
+      inertia: 0.5,
+    });
 
-  // ✅ Force update after images load
-  const handleLoad = () => {
-    lscroll.update(); // update scroll height
-  };
+    // ✅ Force update after images load
+    const handleLoad = () => {
+      lscroll.update(); // update scroll height
+    };
 
-  window.addEventListener("load", handleLoad);
+    window.addEventListener("load", handleLoad);
 
-  // ✅ Fallback: trigger update after 1s (helps in case image loads don't trigger)
-  setTimeout(() => {
-    lscroll.update();
-  }, 1000);
+    // ✅ Fallback: trigger update after 1s (helps in case image loads don't trigger)
+    setTimeout(() => {
+      lscroll.update();
+    }, 1000);
 
-  // ✅ Image hover effect
-  Array.from(document.querySelectorAll(".project-card__middle")).forEach(
-    (el: any) => {
-      const imgs: any = Array.from(el.querySelectorAll("img"));
-      new hoverEffect({
-        parent: el,
-        intensity: 0.2,
-        speedIn: el.dataset.speedin || undefined,
-        speedOut: el.dataset.speedout || undefined,
-        easing: el.dataset.easing || undefined,
-        hover: el.dataset.hover || undefined,
-        image1: imgs[0].getAttribute("src"),
-        image2: imgs[1].getAttribute("src"),
-        displacementImage: el.dataset.displacement,
-      });
-    }
-  );
+    // ✅ Image hover effect
+    Array.from(document.querySelectorAll(".project-card__middle")).forEach(
+      (el: any) => {
+        const imgs: any = Array.from(el.querySelectorAll("img"));
+        new hoverEffect({
+          parent: el,
+          intensity: 0.2,
+          speedIn: el.dataset.speedin || undefined,
+          speedOut: el.dataset.speedout || undefined,
+          easing: el.dataset.easing || undefined,
+          hover: el.dataset.hover || undefined,
+          image1: imgs[0].getAttribute("src"),
+          image2: imgs[1].getAttribute("src"),
+          displacementImage: el.dataset.displacement,
+        });
+      }
+    );
 
-  // ✅ Custom cursor
-  const cursor = document.querySelector(".cursor");
-  window.onmousemove = (e: any) => {
-    cursor?.setAttribute("style", `top: ${e.pageY}px; left: ${e.pageX}px;`);
-  };
+    // ✅ Custom cursor
+    const cursor = document.querySelector(".cursor");
+    window.onmousemove = (e: any) => {
+      cursor?.setAttribute("style", `top: ${e.pageY}px; left: ${e.pageX}px;`);
+    };
 
-  return () => {
-    window.removeEventListener("load", handleLoad);
-    lscroll.destroy();
-  };
-}, []);
+    return () => {
+      window.removeEventListener("load", handleLoad);
+      try {
+        lscroll.destroy();
+      } catch (e) {
+        // ignore if already destroyed
+      }
+    };
+  }, []);
 
 
 
@@ -116,6 +127,155 @@ React.useEffect(() => {
       setIsToggleOpen(false);
     }
   }
+  const [selectedExperience, setSelectedExperience] = useState<number | null>(null);
+
+// Disable body scroll when modal open
+React.useEffect(() => {
+  document.body.style.overflow = selectedExperience !== null ? "hidden" : "";
+}, [selectedExperience]);
+
+const ExperienceDetail: React.FC<{ selected: number | null; onClose: () => void }> = ({
+  selected,
+  onClose,
+}) => {
+  const closeBtnRef = React.useRef<HTMLButtonElement | null>(null);
+
+  // Close on ESC
+  React.useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    if (selected !== null) document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [selected]);
+
+  // Focus close button when opened
+  React.useEffect(() => {
+    if (selected !== null) {
+      setTimeout(() => closeBtnRef.current?.focus(), 80);
+    }
+  }, [selected]);
+
+  const details = [
+    {
+      role: "Accenture Roles",
+      company: "Accenture",
+      duration: "Feb 2025 – Present",
+      bullets: [
+        "Software Engineer: Working on Enterprise EHS and Risk Management applications.",
+        "Associate Software Engineer: Developed UI components for Fiori applications.",
+        "App Developer Intern: Assisted in testing SAP ABAP reports and integration workflows.",
+      ],
+      timeline: [
+        { date: "Jan 2026", title: "Software Engineer", desc: "Current role - Working on Enterprise EHS and Risk Management applications, creating Power BI dashboards and reducing defects by ~25%." },
+        { date: "Apr 2024", title: "Associate Software Engineer", desc: "Worked on Enablon-based EHS solutions, developing UI components for Fiori applications and collaborating with backend teams." },
+        { date: "Feb 2025", title: "App Developer Intern", desc: "Assisted in developing and testing SAP ABAP reports and Fiori applications, learning enterprise-level SAP modules." },
+        { date: "Jun 2025", title: "Intern Completion", desc: "Completed intern program with hands-on experience in enterprise-level SAP modules and integration workflows." },
+      ],
+    },
+    {
+      role: "Backend Developer Intern",
+      company: "NullClass Private Ltd",
+      duration: "May 2023 – Jul 2023",
+      bullets: [
+        "Optimized backend APIs to decrease page loading time.",
+        "Integrated modern UI tools and assisted frontend teams.",
+      ],
+    },
+  ];
+
+  const item = selected !== null ? details[selected] : null;
+
+  // Timeline animation variants
+  const timelineVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.15, duration: 0.4, ease: "easeOut" },
+    }),
+  };
+
+  return (
+    <AnimatePresence>
+      {selected !== null && item && (
+        <motion.div
+          className="fixed inset-0 bg-white backdrop-blur-sm flex justify-center items-center z-[100]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          onClick={() => onClose()}
+        >
+          <motion.div
+            role="dialog"
+            aria-modal="true"
+            className="relative w-[90%] max-w-2xl p-6 rounded-2xl bg-white border border-gray-200 shadow-2xl text-white overflow-y-auto max-h-[85vh]"
+            initial={{ scale: 0.8, opacity: 0, y: 50 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.8, opacity: 0, y: 50 }}
+            transition={{ type: "spring", stiffness: 120, damping: 15 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              ref={closeBtnRef}
+              onClick={onClose}
+              className="absolute top-4 right-5 w-8 h-8 flex items-center justify-center rounded-full ext-xl font-bold transition-all"
+              aria-label="Close detail"
+            >
+              ✕
+            </button>
+
+            {/* Header */}
+            <h2 className="text-2xl font-semibold mb-2">
+              {item.role} — {item.company}
+            </h2>
+            <p className="text-sm text-gray-600 mb-4">{item.duration}</p>
+
+            {/* Timeline or Bullets */}
+            {selected === 0 && (item as any).timeline ? (
+              <motion.ol
+                className="timeline-list border-l-2 border-gray-300 pl-4 space-y-6"
+                initial="hidden"
+                animate="visible"
+              >
+                {(item as any).timeline.map((t: any, i: number) => (
+                  <motion.li
+                    key={i}
+                    custom={i}
+                    variants={timelineVariants}
+                    className="relative mb-4"
+                  >
+                    <div className="absolute -left-3 top-1 w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <div className="font-semibold text-gray-800">{t.date}</div>
+                    <div className="text-lg font-bold mt-1 ">{t.title}</div>
+                    <div className="text-gray-700 text-sm">{t.desc}</div>
+                  </motion.li>
+                ))}
+              </motion.ol>
+            ) : (
+              <ul className="list-disc list-inside space-y-2">
+                {item.bullets.map((b: string, i: number) => (
+                  <motion.li
+                    key={i}
+                    custom={i}
+                    variants={timelineVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="mb-3 text-gray-700"
+                  >
+                    {b}
+                  </motion.li>
+                ))}
+              </ul>
+            )}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
 
   return (
     <>
@@ -412,27 +572,61 @@ React.useEffect(() => {
             </h1>
             <p className="paragraph">Here’s a quick look at where I’ve worked.</p>
             <div className="experience-list">
-              <div className="experience-card">
-                <h3 className="experience-role">App Developer Intern</h3>
-                <p className="experience-company">Accenture</p>
-                <p className="experience-duration">Feb 2025 – Jun 2025</p>
-                <p className="experience-description">
-                  Assisted in developing and testing SAP ABAP reports and Fiori applications, gaining hands-on experience in enterprise-level SAP modules and integration workflows. </p>
+
+              {/* Accenture Card - Multiple roles */}
+              <div
+                className="experience-card cursor-pointer bg-[#1a1a1a] hover:bg-[#2a2a2a] transition-all duration-300 border border-white/10 hover:border-white/30 p-6 rounded-xl shadow-lg"
+                role="button"
+                tabIndex={0}
+                onClick={() => setSelectedExperience(0)}
+                onKeyDown={(e) => e.key === 'Enter' && setSelectedExperience(0)}
+              >
+                <h3 className="experience-company text-lg font-semibold mb-6">Accenture</h3>
+                <div className="experience-timeline">
+                  <div className="experience-timeline-item">
+                    <div className="experience-timeline-marker"></div>
+                    <div className="experience-timeline-content">
+                      <h2 className="experience-role">Associate Software Engineer</h2>
+                      <p className="experience-duration text-sm text-white/60">Oct 2025 - Present . {months +1} mos</p>
+                      <p className="experience-description mt-2">
+                        Worked on Enablon-based EHS and Risk Management applications, creating Power BI dashboards and reducing reported defects by ~25% through testing and fixes.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Role 3 - Intern */}
+                  <div className="experience-timeline-item">
+                    <div className="experience-timeline-marker"></div>
+                    <div className="experience-timeline-content">
+                      <h3 className="experience-role">App Developer Intern</h3>
+                      <p className="experience-duration text-sm text-white/60">Feb 2025 - Jun 2025 · 5 mos</p>
+                      <p className="experience-description mt-2">
+                        Assisted in developing and testing SAP ABAP reports and Fiori applications, gaining hands-on experience in enterprise-level SAP modules and integration workflows.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div className="experience-card">
-                <h3 className="experience-role">Backend Developer Intern</h3>
-                <p className="experience-company">NullClass Private Ltd</p>
-                <p className="experience-duration">May 2023 – Jul 2023</p>
-                <p className="experience-description">
+              {/* NullClass Card */}
+              <div
+                className="experience-card cursor-pointer bg-[#1a1a1a] hover:bg-[#2a2a2a] transition-all duration-300 border border-white/10 hover:border-white/30 p-6 rounded-xl shadow-lg"
+                role="button"
+                tabIndex={0}
+                onClick={() => setSelectedExperience(1)}
+                onKeyDown={(e) => e.key === 'Enter' && setSelectedExperience(1)}
+              >
+                <h3 className="experience-company text-lg font-semibold">NullClass Private Ltd</h3>
+                <h3 className="experience-role mt-4">Backend Developer Intern</h3>
+                <p className="experience-duration text-sm text-white/60">May 2023 - Jul 2023 · 3 mos</p>
+                <p className="experience-description mt-2">
                   Decreased page loading time by optimizing backend APIs. Analyzed performance and integrated modern UI tools like Framer.
                 </p>
               </div>
-
-              
-
-              
             </div>
+
+            {/* Modal for selected experience */}
+            <ExperienceDetail selected={selectedExperience} onClose={() => setSelectedExperience(null)} />
           </section>
 
            <section className="section-socials">

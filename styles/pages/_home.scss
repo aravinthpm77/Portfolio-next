@@ -666,7 +666,8 @@
       font-style: italic;
       font-size: 1.8rem;
       color: #c0c0c0;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      margin-left:-1rem;
     }
 
     .experience-duration {
@@ -678,6 +679,60 @@
     .experience-description {
       font-size: 1.6rem;
       line-height: 1.7;
+    }
+
+    .experience-timeline {
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 2rem;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(180deg, rgba(160, 241, 247, 0.6), transparent);
+      }
+    }
+
+    .experience-timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 3rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &:not(:last-child) {
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+    }
+
+    .experience-timeline-marker {
+      position: absolute;
+      left: -0.9rem;
+      top: 0.3rem;
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a0f1f7, #ffb8e0);
+      box-shadow: 0 0 12px rgba(160, 241, 247, 0.4);
+    }
+
+    .experience-timeline-content {
+      .experience-role {
+        margin-bottom: 0.5rem;
+      }
+
+      .experience-duration {
+        margin-bottom: 0.8rem;
+      }
+
+      .experience-description {
+        margin-bottom: 0;
+      }
     }
 
     @media only screen and (max-width: 57em) {
@@ -777,19 +832,22 @@
 }
 
 .footer {
-  @include centerContent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   margin-top: 12rem;
   padding: 3rem 6rem;
   border-top: 1px solid rgba(#c4c4c4, 0.25);
   background: #18181b;
+  gap: 4rem;
 
   @media only screen and (max-width: 45em) {
     padding-left: 4rem;
     padding-right: 2rem;
     
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 2rem;
   }
 
@@ -799,7 +857,6 @@
 
   &__info {
     @include centerContent;
-    margin-right: 16rem;
     
     p {
       color: #aaa;
@@ -815,7 +872,6 @@
 
   &__socials {
     @include centerContent;
-    margin-left: 3rem;
     gap: 4rem;
     width: auto;
     a {
