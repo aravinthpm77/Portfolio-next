@@ -537,7 +537,7 @@ const ExperienceDetail: React.FC<{ selected: number | null; onClose: () => void 
                         <h3 className="review-card__h3">{review.userName}</h3>
                       </div>
                       <div className="review-card__top--right">
-                        <img src="https://img.icons8.com/ios-glyphs/30/FFFFFF/twitterx--v1.png" alt="twitter icon" />
+                        <img src="https://img.icons8.com/ios/30/FFFFFF/fiverr--v2.png" alt="twitter icon" />
                       </div>
                     </div>
                     <div className="review-card__bottom">
@@ -555,7 +555,7 @@ const ExperienceDetail: React.FC<{ selected: number | null; onClose: () => void 
                         <h3 className="review-card__h3">{review.userName}</h3>
                       </div>
                       <div className="review-card__top--right">
-                        <img src="https://img.icons8.com/ios-glyphs/30/FFFFFF/twitterx--v1.png" alt="twitter icon" />
+                        <img src="https://img.icons8.com/ios/30/FFFFFF/fiverr--v2.png" alt="twitter icon" />
                       </div>
                     </div>
                     <div className="review-card__bottom">
